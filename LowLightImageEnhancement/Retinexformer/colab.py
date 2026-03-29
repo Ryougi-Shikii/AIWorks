@@ -1,3 +1,34 @@
+
+"""
+install necessary libraries ->
+!pip install einops addict future lmdb yapf lpips thop timm basicsr
+
+
+next cell ->
+import os
+
+# 1. Define the path where Colab installs basicsr
+# In Colab, it's usually in /usr/local/lib/python3.12/dist-packages/
+path = '/usr/local/lib/python3.12/dist-packages/basicsr/data/degradations.py'
+
+# 2. Check if file exists and patch it directly
+if os.path.exists(path):
+    with open(path, 'r') as f:
+        content = f.read()
+    
+    # Replace the broken import with the correct one
+    fixed_content = content.replace(
+        'from torchvision.transforms.functional_tensor import rgb_to_grayscale', 
+        'from torchvision.transforms.functional import rgb_to_grayscale'
+    )
+    
+    with open(path, 'w') as f:
+        f.write(fixed_content)
+    print("✅ Surgery Successful! basicsr patched without importing it.")
+else:
+    print("❌ File not found at that path. Run '!pip show basicsr' to check the Location.")
+"""
+
 import os
 import sys
 import importlib.util
