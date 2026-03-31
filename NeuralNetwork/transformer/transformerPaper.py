@@ -1,6 +1,6 @@
 """
 Full Transformer Architecture from Scratch
-Based on "Attention Is All You Need" (Vaswani et al., 2017)
+Based on "Attention Is All You Need" (2017)
 """
 
 import math
